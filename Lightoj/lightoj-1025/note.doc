@@ -1,3 +1,4 @@
 In this problem we have to find how many palindromes can be formed by removing letters from the given string.
 
-I solve this problem in dynamic programming approach.The dp solution of this problem has two states, (left,right). Every dp[left][right] represent how many palindromes can be made using string from indes left to indx right.
+I solve this problem in dynamic programming approach.The dp solution of this problem has two states, (left,right).
+Each dp[left][right] represent how many palindromes can be made using string from indes left to indx right.
