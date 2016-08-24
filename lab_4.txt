@@ -1,0 +1,46 @@
+CREATE TABLE Customer(
+cust_id INTEGER PRIMARY KEY ,
+cust_name VARCHAR( 50 )
+)
+
+
+CREATE TABLE sale(
+bill_no INTEGER PRIMARY KEY ,
+bill_date DATE,
+qtyqty_sold INTEGER
+)
+
+
+CREATE TABLE item(
+item_id INTEGER PRIMARY KEY ,
+item_name VARCHAR( 50 ) ,
+item_price INTEGER
+)
+
+
+CREATE TABLE details(
+cust_id INTEGER,
+item_id INTEGER,
+b_no INT
+)
+
+
+
+SELECT cust_name, SUM( qty_sold ) AS total_bought
+FROM customer, details, sale
+WHERE customer.cust_id = details.cust_id
+AND details.b_no = sale.bill_no
+GROUP BY (
+customer.cust_id
+)
+
+
+
+SELECT cust_name, item_name, item_price, qty_sold AS qty_bought, SUM( qty_sold * item_price ) AS total_price
+FROM customer, details, sale, item
+WHERE details.b_no = sale.bill_no
+AND customer.cust_id = details.cust_id
+AND item.item_id = details.item_id
+GROUP BY (
+bill_no
+)
